@@ -16,13 +16,25 @@
             FLEARN <span> English</span>
         </div>
         <nav class="main-nav">
-            <a href="#" class="menu-icon">MENU &#x2261;</a>
+            <a href="#" id="menu-toggle" class="menu-icon">MENU &#x2261;</a>
         </nav>
     </header>
+    <nav id="menu-overlay">
+    <a href="#" class="close" id="menu-close">×</a>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#what">What is singluar-Plural</a></li>
+      <li><a href="#explain">Singular-Plural</a></li>
+      <li><a href="#irregular">Irregular Plural</a></li>
+      <li><a href="#subject">Subject-Verb Agreement</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" class="button primary">Get Started</a></li>
+    </ul>
+  </nav>
     <main>
-        <section class="hero-section">
+        <section class="hero-section" id="home">
             <div class="hero-content">
-                <h1>Singluar & Plural Nouns</h1>
+                <h1>Singular & Plural Nouns</h1>
                 <p>Understanding Single and Multiple Forms.</p>
                 <hr class="hero-divider">
                 <h1 class="subject">Subject-Verb Agreement</h1>
@@ -33,7 +45,7 @@
             </div>
         </section>
 
-        <section class="explainer-section">
+        <section class="explainer-section" id="what">
             <div class="explainer-box">
                 <h1 class="explainer-title">What are Singular Nouns?</h1>
                 <p class="explainer-text">Singular nouns refer to one person, place, thing, or idea. They are used when
@@ -78,9 +90,9 @@
         </section>
 
 
-        <section class="grid-section">
+        <section class="grid-section" id="explain">
             <div class="singular">
-                <h1>Singular Plural Noun</h1>
+                <h1>Singular & Plural Noun</h1>
                 <p>Understanding the difference is crucial for proper grammar and communication</p>
                 <p>There are several general rules for changing singular nouns into their plural form</p>
             </div>
@@ -165,7 +177,7 @@
                 </div>
             </div>
         </section>
-        <section class="grid-section-2">
+        <section class="grid-section-2" id="irregular">
             <div class="grid-item-2 item1">
                 <div class="singular">
                     <h1>Irregular Plural Noun</h1>
@@ -245,7 +257,7 @@
                 </ul>
             </div>
         </section>
-        <section class="verb-agreement-section">
+        <section class="verb-agreement-section" id="subject">
             <div class="verb-agreement">
                 <h1>Subject-Verb Agreement</h1>
                 <p>In English, the subject and verb must agree in number. This means that a singular subject takes a singular verb, and a plural subject takes a plural verb.</p>
@@ -413,9 +425,9 @@
       </div>
     </div>
         </section>
-        <section class="contact-section">
+        <section class="contact-section" id="contact">
     <div class="contact-form">
-      <form>
+      <form onsubmit="alert('Thank you for your message!'); return false;">
         <label for="name">NAME</label>
         <input type="text" id="name" name="name" />
 
@@ -463,9 +475,35 @@
     <p>© Flearn &nbsp; | &nbsp; <a href="" target="_blank">English</a></p>
   </div>
 </footer>
-</body>
+<script>
+  const menuOverlay = document.getElementById('menu-overlay');
+    const menuToggle = document.getElementById('menu-toggle');
+    const menuClose = document.getElementById('menu-close');
 
-</html>
+    menuToggle.addEventListener('click', function (e) {
+      e.preventDefault();
+      menuOverlay.classList.add('active');
+    });
+
+    menuClose.addEventListener('click', function (e) {
+      e.preventDefault();
+      menuOverlay.classList.remove('active');
+    });
+
+    const menuLinks = document.querySelectorAll('#menu-overlay ul li a');
+
+menuLinks.forEach(link => {
+  link.addEventListener('click', function () {
+    menuOverlay.classList.remove('active');
+  });
+});
+
+    const navigation = document.querySelector('.main-header');
+    const navigationHeight = navigation.offsetHeight;
+
+    document.documentElement.style.setProperty("--scroll-padding", `${navigationHeight}px`);
+</script>
+
 </body>
 
 </html>
